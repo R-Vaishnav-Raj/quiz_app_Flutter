@@ -16,6 +16,14 @@ class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
   var currentState ='start-screen';
 
+  void resetQuiz(){
+
+    setState(() {
+      currentState ='start-screen';
+      selectedAnswers = [];
+    });
+
+  }
   void switchScreen(){
     setState(() {
       // selectedAnswers= [];
@@ -42,6 +50,7 @@ class _QuizState extends State<Quiz> {
     if(currentState == 'results-screen'){
       screenWidget = ResultScreen(
         chooseAnswer: selectedAnswers,
+        resetQuiz: resetQuiz,
       );
     }
     return  MaterialApp(
